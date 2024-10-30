@@ -41,7 +41,7 @@ export default {
   data () {
     return {
       tarif: 1,
-      discount: 4,
+      discount: 1,
     }
   },
   methods: {
