@@ -42,9 +42,18 @@ export default {
     return {
       tarif: 1,
       discount: 1,
+      backgroundSize: '0% 100%'
     }
   },
   methods: {
+    updateSlider(e) {
+      let clickedElement = e.target,
+          min = clickedElement.min,
+          max = clickedElement.max,
+          val = clickedElement.value;
+
+      this.backgroundSize = (val - min) * 100 / (max - min) + '% 100%';
+    }
   },
 }
 </script>
@@ -84,8 +93,11 @@ export default {
           </ul>
           <div class="tarif__discount">
             <h3>Выберите срок подписки</h3>
-            <div class="line">
-              <span :class="`active-${discount}`"></span>
+            <div class="line__wrap">
+              <input type="range" min="1" max="4" step="1" v-model="discount" @input="updateSlider" :style="{backgroundSize: backgroundSize}">
+              <div class="line">
+                <span :class="`active-${discount}`"></span>
+              </div>
             </div>
             <ul>
               <li @click="discount = 1">
@@ -96,6 +108,7 @@ export default {
                     'hidden': discount == 1
                   }"></span>
                 <p class="desk">1 месяц</p>
+                <p>1 мес</p>
               </li>
               <li @click="discount = 2">
                 <span 
@@ -105,6 +118,7 @@ export default {
                     'hidden': discount == 2
                   }"></span>
                 <p class="desk">3 месяца <span>(-10%)</span></p>
+                <p>3 мес <span>-10%</span></p>
               </li>
               <li @click="discount = 3">
                 <span 
@@ -114,6 +128,7 @@ export default {
                     'hidden': discount == 3
                   }"></span>
                 <p class="desk">6 месяцев <span>(-20%)</span></p>
+                <p>6 мес <span>-20%</span></p>
               </li>
               <li @click="discount = 4">
                 <span 
@@ -123,6 +138,7 @@ export default {
                     'hidden': discount == 4
                   }"></span>
                 <p class="desk">12 месяцев <span>(-30%)</span></p>
+                <p>12 мес <span>-30%</span></p>
               </li>
             </ul>
           </div>
