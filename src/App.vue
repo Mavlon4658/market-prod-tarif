@@ -41,7 +41,7 @@ export default {
   data () {
     return {
       tarif: 1,
-      discount: 1,
+      discount: 4,
     }
   },
   methods: {
@@ -83,39 +83,46 @@ export default {
             >Расширенный</li>
           </ul>
           <div class="tarif__discount">
-            <h3>Срок подписки</h3>
+            <h3>Выберите срок подписки</h3>
             <div class="line">
               <span :class="`active-${discount}`"></span>
             </div>
             <ul>
               <li @click="discount = 1">
-                <span class="icon" :class="{'active': discount == 1}"></span>
+                <span 
+                  class="icon"
+                  :class="{
+                    'active': discount >= 1,
+                    'hidden': discount == 1
+                  }"></span>
                 <p class="desk">1 месяц</p>
-                <p>1 мес</p>
               </li>
               <li @click="discount = 2">
-                <span class="icon" :class="{'active': discount == 2}"></span>
+                <span 
+                  class="icon"
+                  :class="{
+                    'active': discount >= 2,
+                    'hidden': discount == 2
+                  }"></span>
                 <p class="desk">3 месяца <span>(-10%)</span></p>
-                <p>
-                  3 мес
-                  <span>-10%</span>
-                </p>
               </li>
               <li @click="discount = 3">
-                <span class="icon" :class="{'active': discount == 3}"></span>
+                <span 
+                  class="icon"
+                  :class="{
+                    'active': discount >= 3,
+                    'hidden': discount == 3
+                  }"></span>
                 <p class="desk">6 месяцев <span>(-20%)</span></p>
-                <p>
-                  6 мес
-                  <span>-20%</span>
-                </p>
               </li>
               <li @click="discount = 4">
-                <span class="icon" :class="{'active': discount == 4}"></span>
+                <span 
+                  class="icon"
+                  :class="{
+                    'active': discount >= 4,
+                    'hidden': discount == 4
+                  }"></span>
                 <p class="desk">12 месяцев <span>(-30%)</span></p>
-                <p>
-                  12 мес
-                  <span>-30%</span>
-                </p>
               </li>
             </ul>
           </div>
@@ -231,7 +238,7 @@ export default {
               <div class="networks">
                 <a href="#">
                   <img :src="$getImage('wb.svg')" alt="">
-                  <span>1 кабинет </span>
+                  <span>7 кабинет </span>
                 </a>
                 <a href="#">
                   <img :src="$getImage('tg-blue.svg')" alt="">

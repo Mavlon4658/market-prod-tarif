@@ -274,34 +274,27 @@ body {
     }
 
     &__discount {
-        margin-bottom: 40px;
-
-        @include media(992) {
-            margin-bottom: 35px;
-        }
+        width: 442px;
+        margin: 0 auto 35px;
 
         h3 {
+            font-size: 16px;
             font-weight: 600;
-            font-size: 24px;
-            margin-bottom: 20px;
-            
+            margin-bottom: 27px;
+            text-align: center;
+
             @include media(992) {
-                font-size: 16px;
                 margin-bottom: 18px;
             }
         }
 
         .line {
-            width: 100%;
+            width: 375px;
             height: 4px;
             border-radius: 4px;
-            background: black;
+            background: #444444;
             position: relative;
-            margin-bottom: 7px;
-
-            @include media(-992) {
-                display: none;
-            }
+            margin: 0 0 9px 27px;
 
             span {
                 position: absolute;
@@ -338,131 +331,88 @@ body {
                 }
 
                 &.active-2 {
-                    width: calc(100% / 3);
+                    width: calc(100% / 3 - 9px);
                 }
 
                 &.active-3 {
-                    width: calc(100% / 3 * 2 - 12px);
+                    width: calc(100% / 3 * 2 - 8px);
                 }
 
                 &.active-4 {
-                    width: calc(100%);
+                    width: 100%;
                 }
             }
         }
 
         ul {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            background: white;
-            padding: 23px;
-            gap: 60px;
-            border-radius: 8px;
-            
-            @include media(992) {
-                justify-content: space-between;
-                align-items: flex-start;
-                gap: 0px;
-                padding: 0;
-                gap: 0px;
-                background: transparent;
-            }
+            align-items: flex-start;
+            justify-content: space-between;
 
             li {
-                display: flex;
-                align-items: center;
-                gap: 9px;
+                color: black;
+                position: relative;
+                z-index: 1;
                 cursor: pointer;
                 user-select: none;
-                
-                @include media(992) {
-                    flex-direction: column;
-                    position: relative;
-
-                    &::before {
-                        content: "";
-                        position: absolute;
-                        left: 0;
-                        top: -20px;
-                        width: 100%;
-                        height: 20px;
-                        background: transparent;
-                    }
-                }
-            }
-
-            .icon {
-                width: 22px;
-                height: 22px;
-                border-radius: 50%;
-                background: #B6B6B6;
-                position: relative;
-
-                @include media(992) {
-                    display: none;
-                }
 
                 &::before {
                     content: "";
                     position: absolute;
-                    top: 2px;
-                    left: 2px;
-                    width: calc(100% - 4px);
-                    height: calc(100% - 4px);
-                    border-radius: 50%;
-                    background: white;
+                    left: 0;
+                    top: -20px;
+                    width: 100%;
+                    height: 20px;
+                    background: transparent;
                 }
+            }
+
+            .icon {
+                position: absolute;
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background: #444444;
+                left: 50%;
+                transform: translateX(-50%);
+                top: -16px;
 
                 &.active {
                     background: linear-gradient(to right, #FD3237, #7733FC);
+                }
 
-                    &::after {
-                        content: "";
-                        position: absolute;
-                        top: 50%;
-                        left: 50%;
-                        transform: translate(-50%, -50%);
-                        width: 10px;
-                        height: 10px;
-                        border-radius: 50%;
-                        background: #AD00BD;
-                    }
+                &.hidden {
+                    opacity: 0;
+                }
+                
+                &::before {
+                    content: "";
+                    width: 2px;
+                    height: 2px;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background: white;
+                    border-radius: 50%;
                 }
             }
             
             p {
-                font-size: 16px;
-                color: black;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                font-size: 14px;
                 font-weight: 600;
-                
-                &:not(.desk) {
-                    display: none;
-                }
-                
-                @include media(992) {
-                    font-size: 14px;
-                    display: flex;
-                    align-items: flex-start;
-                    flex-direction: column;
-
-                    &.desk {
-                        display: none;
-                    }
-
-                    &:not(.desk) {
-                        display: flex;
-                    }
-                }
-
-                span {
-                    background: linear-gradient(to right, #FD3237, #7733FC);
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                    font-weight: bold;
-                }
+                color: #141414;
             }
 
+            span {
+                background: linear-gradient(to right, #FD3237, #7733FC);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                font-weight: bold;
+            }
         }
     }
 
@@ -593,12 +543,22 @@ body {
         ul {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 15px;
+
+            @include media(992) {
+                gap: 10px;
+            }
 
             li {
                 display: flex;
                 align-items: flex-start;
                 gap: 6px;
+
+                @include media(-992) {
+                    br {
+                        display: none;
+                    }
+                }
             }
 
             p {
@@ -606,6 +566,7 @@ body {
                 font-weight: 500;
                 color: #212121;
                 letter-spacing: -0.4px;
+                white-space: nowrap;
             }
         }
     }
